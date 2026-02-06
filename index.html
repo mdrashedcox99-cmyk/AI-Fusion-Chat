@@ -19,9 +19,9 @@
 </head>
 <body>
 
-<header>Al Fusion BD AI (Llama 3.3)</header>
+<header>Al Fusion BD AI</header>
 <div id="chat-window">
-    <div class="msg ai">Hello! I am Llama 3.3. How can I assist Al Fusion BD today?</div>
+    <div class="msg ai">Hello! I am Al Fusion BD AI. How can I help you?</div>
 </div>
 
 <div class="input-area">
@@ -30,6 +30,7 @@
 </div>
 
 <script>
+    // আপনার OpenRouter API Key
     const OPENROUTER_API_KEY = "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"; 
 
     async function sendMessage() {
@@ -48,7 +49,7 @@
                     "Content-Type": "application/json"
                 },
                 body: JSON.stringify({
-                    "model": "meta-llama/llama-3.3-70b-instruct:free", // এখানে আপনার মডেলটি দিয়েছি
+                    "model": "google/gemini-2.0-flash-lite-preview-02-05:free", // দ্রুত এবং স্থিতিশীল মডেল
                     "messages": [{ "role": "user", "content": msg }]
                 })
             });
@@ -57,10 +58,10 @@
             if (data.choices && data.choices[0].message.content) {
                 addMessage(data.choices[0].message.content, 'ai');
             } else {
-                addMessage("API Error: Model might be busy.", 'ai');
+                addMessage("Server busy. Please try sending again in a moment.", 'ai');
             }
         } catch (e) {
-            addMessage("Connection error. Please try again.", 'ai');
+            addMessage("Connection error. Please check your internet.", 'ai');
         }
     }
 
