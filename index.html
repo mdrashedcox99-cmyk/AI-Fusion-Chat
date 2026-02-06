@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -21,7 +22,7 @@
 
 <header>Al Fusion BD AI Assistant</header>
 <div id="chat-window">
-    <div class="msg ai">Hello! Al Fusion BD AI is active. How can I help you today?</div>
+    <div class="msg ai">I am ready. Ask me anything, Al Fusion BD!</div>
 </div>
 
 <div class="input-area">
@@ -30,7 +31,6 @@
 </div>
 
 <script>
-    // আপনার OpenRouter Key
     const OPENROUTER_API_KEY = "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"; 
 
     async function sendMessage() {
@@ -49,7 +49,7 @@
                     "Content-Type": "application/json"
                 },
                 body: JSON.stringify({
-                    "model": "google/gemini-flash-1.5-8b:free", // দ্রুত এবং স্থিতিশীল মডেল
+                    "model": "meta-llama/llama-3.1-8b-instruct:free",
                     "messages": [{ "role": "user", "content": msg }]
                 })
             });
@@ -58,10 +58,10 @@
             if (data.choices && data.choices[0].message) {
                 addMessage(data.choices[0].message.content, 'ai');
             } else {
-                addMessage("API limit reached or busy. Please wait a moment.", 'ai');
+                addMessage("Model is waking up. Please try one more time in a few seconds.", 'ai');
             }
         } catch (e) {
-            addMessage("Connection error. Please try again.", 'ai');
+            addMessage("Network error. Please reload.", 'ai');
         }
     }
 
