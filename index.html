@@ -21,7 +21,7 @@
 
 <header>Al Fusion BD AI</header>
 <div id="chat-window">
-    <div class="msg ai">Hello! I am Al Fusion BD AI. How can I help you?</div>
+    <div class="msg ai">Hello! I am Al Fusion BD AI. I am now using a faster stable model. How can I help?</div>
 </div>
 
 <div class="input-area">
@@ -49,7 +49,7 @@
                     "Content-Type": "application/json"
                 },
                 body: JSON.stringify({
-                    "model": "google/gemini-2.0-flash-lite-preview-02-05:free", // দ্রুত এবং স্থিতিশীল মডেল
+                    "model": "google/gemini-2.0-flash-lite-preview-02-05:free", // এটি বর্তমানে সবচেয়ে স্টেবল
                     "messages": [{ "role": "user", "content": msg }]
                 })
             });
@@ -58,7 +58,7 @@
             if (data.choices && data.choices[0].message.content) {
                 addMessage(data.choices[0].message.content, 'ai');
             } else {
-                addMessage("Server busy. Please try sending again in a moment.", 'ai');
+                addMessage("Model is temporarily busy. Please try again in 5 seconds.", 'ai');
             }
         } catch (e) {
             addMessage("Connection error. Please check your internet.", 'ai');
