@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -22,7 +21,7 @@
 
 <header>Al Fusion BD AI Assistant</header>
 <div id="chat-window">
-    <div class="msg ai">I am ready. Ask me anything, Al Fusion BD!</div>
+    <div class="msg ai">I am live and stable! How can I help Al Fusion BD right now?</div>
 </div>
 
 <div class="input-area">
@@ -49,7 +48,7 @@
                     "Content-Type": "application/json"
                 },
                 body: JSON.stringify({
-                    "model": "meta-llama/llama-3.1-8b-instruct:free",
+                    "model": "mistralai/mistral-7b-instruct:free", 
                     "messages": [{ "role": "user", "content": msg }]
                 })
             });
@@ -58,10 +57,10 @@
             if (data.choices && data.choices[0].message) {
                 addMessage(data.choices[0].message.content, 'ai');
             } else {
-                addMessage("Model is waking up. Please try one more time in a few seconds.", 'ai');
+                addMessage("Server is a bit busy. Try one more time!", 'ai');
             }
         } catch (e) {
-            addMessage("Network error. Please reload.", 'ai');
+            addMessage("Network issue. Please refresh.", 'ai');
         }
     }
 
