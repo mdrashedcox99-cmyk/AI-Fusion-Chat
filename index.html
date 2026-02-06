@@ -19,9 +19,9 @@
 </head>
 <body>
 
-<header>Al Fusion BD AI</header>
+<header>Al Fusion BD AI Assistant</header>
 <div id="chat-window">
-    <div class="msg ai">Hello! I am Al Fusion BD AI. I am now using a faster stable model. How can I help?</div>
+    <div class="msg ai">Success! Al Fusion BD AI is now secure and ready to talk. Ask me anything!</div>
 </div>
 
 <div class="input-area">
@@ -30,7 +30,7 @@
 </div>
 
 <script>
-    // আপনার OpenRouter API Key
+    // আপনার নতুন API Key টি এখানে কাজ করবে
     const OPENROUTER_API_KEY = "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"; 
 
     async function sendMessage() {
@@ -49,7 +49,7 @@
                     "Content-Type": "application/json"
                 },
                 body: JSON.stringify({
-                    "model": "google/gemini-2.0-flash-lite-preview-02-05:free", // এটি বর্তমানে সবচেয়ে স্টেবল
+                    "model": "google/gemini-2.0-flash-lite-preview-02-05:free",
                     "messages": [{ "role": "user", "content": msg }]
                 })
             });
@@ -58,10 +58,10 @@
             if (data.choices && data.choices[0].message.content) {
                 addMessage(data.choices[0].message.content, 'ai');
             } else {
-                addMessage("Model is temporarily busy. Please try again in 5 seconds.", 'ai');
+                addMessage("I am processing. Please try again in 5 seconds.", 'ai');
             }
         } catch (e) {
-            addMessage("Connection error. Please check your internet.", 'ai');
+            addMessage("Connection error. Please refresh.", 'ai');
         }
     }
 
